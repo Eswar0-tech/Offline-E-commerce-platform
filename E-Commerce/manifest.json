@@ -1,0 +1,21 @@
+{
+  "name": "StyleSphere E-commerce",
+  "short_name": "StyleSphere",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f7fafc",
+  "theme_color": "#4a90e2",
+  "description": "An offline-first e-commerce progressive web application.",
+  "icons": [
+    {
+      "src": "https://placehold.co/192x192/4a90e2/ffffff?text=PWA",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://placehold.co/512x512/4a90e2/ffffff?text=PWA",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline First E-commerce</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Theme color for browser UI -->
+    <meta name="theme-color" content="#4a90e2">
+
+    <style>
+        /* Custom font and base styling */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .status-indicator {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .online { background-color: #2ecc71; }
+        .offline { background-color: #e74c3c; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- App Header -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-900">StyleSphere</h1>
+            <div class="flex items-center">
+                <div id="status" class="flex items-center mr-6">
+                    <span id="status-indicator" class="status-indicator"></span>
+                    <span id="status-text" class="font-medium"></span>
+                </div>
+                <button id="notifications-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    Enable Notifications
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        
+        <!-- Hero Section -->
+        <div class="bg-blue-500 text-white p-8 rounded-xl shadow-lg mb-8 text-center">
+            <h2 class="text-3xl font-bold mb-2">Summer Collection is Here!</h2>
+            <p class="text-lg">Discover the latest trends and enjoy offline shopping.</p>
+        </div>
+
+        <!-- Product Grid -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-6">Featured Products</h3>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="Modern Tee" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Offline';">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Modern Tee</h4>
+                        <p class="text-gray-600 mb-4">Comfortable and stylish, perfect for everyday wear.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">$25.00</span>
+                            <button class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 2 (Corrected Image) -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop" alt="Classic Jeans" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Offline';">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Classic Jeans</h4>
+                        <p class="text-gray-600 mb-4">A timeless piece for any wardrobe. Made with premium denim.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">$70.00</span>
+                            <button class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="Running Shoes" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Offline';">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Running Shoes</h4>
+                        <p class="text-gray-600 mb-4">Lightweight and breathable for your daily run.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">$95.00</span>
+                            <button class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=800&auto=format&fit=crop" alt="Leather Watch" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Offline';">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Leather Watch</h4>
+                        <p class="text-gray-600 mb-4">Elegant and durable, a perfect accessory for any outfit.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-blue-600">$150.00</span>
+                            <button class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-6">
+        <div class="container mx-auto text-center text-gray-600">
+            <p>&copy; 2025 StyleSphere. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Custom Message Box -->
+    <div id="message-box" class="fixed bottom-5 right-5 bg-gray-800 text-white py-3 px-5 rounded-lg shadow-xl opacity-0 translate-y-10 transition-all duration-500">
+        <p id="message-text"></p>
+    </div>
+
+    <script>
+        // --- Main Application Logic ---
+
+        // Function to show custom messages
+        function showMessage(message) {
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+            messageText.textContent = message;
+            messageBox.classList.remove('opacity-0', 'translate-y-10');
+            messageBox.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                messageBox.classList.remove('opacity-100', 'translate-y-0');
+                messageBox.classList.add('opacity-0', 'translate-y-10');
+            }, 3000);
+        }
+
+        // 1. Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        showMessage('App is ready for offline use.');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                        showMessage('Offline mode setup failed.');
+                    });
+            });
+        }
+
+        // 2. Online/Offline Status Indicator
+        const statusIndicator = document.getElementById('status-indicator');
+        const statusText = document.getElementById('status-text');
+
+        function updateOnlineStatus() {
+            if (navigator.onLine) {
+                statusIndicator.classList.remove('offline');
+                statusIndicator.classList.add('online');
+                statusText.textContent = 'Online';
+            } else {
+                statusIndicator.classList.remove('online');
+                statusIndicator.classList.add('offline');
+                statusText.textContent = 'Offline';
+                showMessage('You are offline. Some features may be limited.');
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus(); // Initial check
+
+        // 3. Push Notifications
+        const notificationsBtn = document.getElementById('notifications-btn');
+
+        function requestNotificationPermission() {
+            if (!('Notification' in window)) {
+                showMessage('This browser does not support desktop notification');
+                return;
+            }
+
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    showMessage('Notification permission granted!');
+                    notificationsBtn.textContent = 'Notifications On';
+                    notificationsBtn.disabled = true;
+                    subscribeUserToPush();
+                } else {
+                    showMessage('Notification permission denied.');
+                }
+            });
+        }
+        
+        function subscribeUserToPush() {
+            navigator.serviceWorker.ready.then(registration => {
+                // This is a placeholder for a real VAPID public key
+                const applicationServerKey = urlBase64ToUint8Array('YOUR_VAPID_PUBLIC_KEY');
+                registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: applicationServerKey
+                })
+                .then(subscription => {
+                    console.log('User is subscribed:', subscription);
+                    // TODO: Send subscription to your server
+                    showMessage('Successfully subscribed to notifications.');
+                })
+                .catch(err => {
+                    console.error('Failed to subscribe the user: ', err);
+                    showMessage('Subscription to notifications failed.');
+                });
+            });
+        }
+
+        // Helper function to convert VAPID key
+        function urlBase64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+
+        notificationsBtn.addEventListener('click', requestNotificationPermission);
+
+    </script>
+</body>
+</html>
