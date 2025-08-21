@@ -41,13 +41,6 @@ Visit 👉 [http://localhost:8000](http://localhost:8000)
 
 ---
 
-## 🖼️ Demo Preview
-
-![StyleSphere Screenshot](./assets/demo-screenshot.png)
-
-*Browse featured products, enjoy offline shopping, and get notified of the latest trends!*
-
----
 
 ## 🎨 Customization Tips
 
